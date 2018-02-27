@@ -157,9 +157,9 @@ void FlipComp::softRender(MO_SoftContext &context)
 	// Composite pixmaps onto eachother
 	try {
 		if (_selection->value(context.frame()) == 0)
-			CelAlgo::composite(pixmapB.get(), pixmapA.get(), CelAlgo::GC_OVERLAY_OVER, CelAlgo::GC_ADD);
+			CelAlgo::composite(pixmapB.get(), pixmapA.get(), CelAlgo::GC_OVERLAY_OVER, CelAlgo::GC_NOP);
 		else
-			CelAlgo::composite(pixmapA.get(), pixmapB.get(), CelAlgo::GC_OVERLAY_OVER, CelAlgo::GC_ADD);
+			CelAlgo::composite(pixmapA.get(), pixmapB.get(), CelAlgo::GC_OVERLAY_OVER, CelAlgo::GC_NOP);
 	}
 	catch (CelAlgo::AlgoException ex)
 	{
