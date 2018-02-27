@@ -52,7 +52,7 @@ static AT_AttrMeta g_selection( NTR("SELECTION"), QT_TRANSLATE_NOOP( "AT_Attr", 
 Q_TRANSLATOR(FlipComp)
 
 FlipComp::FlipComp()
-: _selection(new AT_IntAttr(this, g_selection, true, 1, 1, 2))
+: _selection(new AT_IntAttr(this, g_selection, true, 0, 0, 1))
 {
 	addInImagePort();
 	addInImagePort();
@@ -93,7 +93,7 @@ void FlipComp::oglRender(MO_OGLContext &context)
 
 	if (imageModuleA && imageModuleB)
 	{
-		if (_selection->value(context.frame()) == 1)
+		if (_selection->value(context.frame()) == 0)
 		{
 			imageModuleA->oglRender(context);
 			imageModuleB->oglRender(context);
@@ -156,7 +156,7 @@ void FlipComp::softRender(MO_SoftContext &context)
 
 	// Composite pixmaps onto eachother
 	try {
-		if (_selection->value(context.frame()) == 1)
+		if (_selection->value(context.frame()) == 0)
 			CelAlgo::composite(pixmapB.get(), pixmapA.get(), CelAlgo::GC_OVERLAY_OVER, CelAlgo::GC_ADD);
 		else
 			CelAlgo::composite(pixmapA.get(), pixmapB.get(), CelAlgo::GC_OVERLAY_OVER, CelAlgo::GC_ADD);
@@ -168,7 +168,7 @@ void FlipComp::softRender(MO_SoftContext &context)
 	}
 
 	// Move the result pixmap into the new cel
-	if (_selection->value(context.frame()) == 1)
+	if (_selection->value(context.frame()) == 0)
 		result->setRepresentation(pixmapB);
 	else
 		result->setRepresentation(pixmapA);
