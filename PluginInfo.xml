@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<plugin sdk_version="1024" id="FlipComp" required="false" module="FlipComp" text="FlipComp" canUnload="false" type="Module" category="Misc" visibility="visible">
+  <icon>resources/flipcomp.png</icon>
+  <desc>Change order of how things are rendered with one attribute.</desc>
+</plugin>
